@@ -366,6 +366,7 @@ img {
 
 .about__description {
   margin-top: .5rem;
+  margin-bottom: 1rem;
   line-height: 1.75;
 }
 
@@ -604,6 +605,7 @@ img {
     font-size: 1.75rem;
   }
   .about__description {
+    margin-bottom: 1rem;
     font-size: 1.15rem;
   }
 
