@@ -549,19 +549,19 @@ img {
 /* For medium devices */
 @media screen and (min-width: 576px) {
 
-
   .about__data {
     padding: 0 6rem;
   }
-
   .about__list {
     flex-direction: row;
     column-gap: 2.5rem;
-  }  g 
+  }  
+
   .section {
     max-width: 800px;
     margin: 0 auto;
   }
+
   .home__description {
     font-size: 1.25rem;
   }
@@ -570,6 +570,7 @@ img {
     grid-template-columns: repeat(3, max-content);
     justify-content: space-evenly;
   }
+
   .contact__social i {
     font-size: 1.75rem;
   }
