@@ -17,8 +17,6 @@ if (navClose) {
     })
 }
 
-
-
 /*=============== REMOVE MENU MOBILE ===============*/
 const navLink = document.querySelectorAll('.nav__link')
 
@@ -79,3 +77,34 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home__img, .section__title, .about__title, .about__list, .about__intro, .about__description, .about__quotes, .contact__content, .footer__content, .footer__copy`)
 sr.reveal(`.home__data`, {delay: 500})
+
+
+/*=============== THEME CHANGE ===============*/
+const savedTheme = localStorage.getItem('theme');
+
+// Apply the saved theme if available
+if (savedTheme) {
+    document.body.classList.add(savedTheme);
+}
+
+function toggleTheme() {
+    const body = document.body;
+    const themeIcon = document.querySelector('.theme-switch');
+    const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+
+    if (currentTheme === 'dark') {
+        body.classList.remove('dark-theme');
+        body.style.setProperty('--color-background', 'var(--color-background-light)');
+        body.style.setProperty('--color-text', 'var(--color-text-light)');
+        themeIcon.classList.remove('ri-sun-fill')
+        themeIcon.classList.add('ri-moon-fill')
+        localStorage.setItem('theme', 'light')
+    } else {
+        body.classList.add('dark-theme');
+        body.style.setProperty('--color-background', 'var(--color-background-dark)');
+        body.style.setProperty('--color-text', 'var(--color-text-dark)');
+        themeIcon.classList.remove('ri-moon-fill')
+        themeIcon.classList.add('ri-sun-fill')
+        localStorage.setItem('theme', 'dark')
+    }
+}

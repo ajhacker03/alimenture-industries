@@ -2,17 +2,24 @@
 :root {
   --header-height: 3.5rem;
   /*========== Colors ==========*/
-  --color-backgroud: #212121;
+  --color-background: #212121;
   --color-primary: #df048c;
   --color-text: #f9f9f9;
+  --color-text-icons: #f9f9f9;
 
   --shadow-img: 0 0 48px hsla(313, 60%, 60%, 0.6);
   --gradient-card: linear-gradient(180deg,
                                 rgb(82, 16, 60),
                                 hsla(314, 75%, 17%, 0.6));
-  /* --gradient-card: linear-gradient(180deg,
-                                rgb(138, 17, 98),
-                                hsla(314, 81%, 17%, 0.6)); */
+  
+  /*========== Dark theme colors ==========*/
+  --color-background-dark: var(--color-background);
+  --color-text-dark: var(--color-text);
+
+  /*========== Light theme colors ==========*/
+  --color-background-light: var(--text-color);
+  --color-text-light: var(--color-background);
+
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -60,8 +67,9 @@ html {
 body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  background-color: var(--color-backgroud);
+  background-color: var(--color-background);
   color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 h1, h2, h3, h4, p, span, address {
@@ -130,10 +138,12 @@ img {
 
 .nav__logo,
 .nav__close,
-.nav__toggle {
+.nav__toggle, 
+.nav__actions {
   display: flex;
   color: var(--color-text);
   cursor: pointer;
+  margin: 1rem;
 }
 
 .nav__logo__img {
@@ -144,10 +154,10 @@ img {
 }
 
 .nav__actions {
-  font-size: 1.25rem;
-  display: flex;
   height: 100%;
-  align-items: flex-end;
+  font-size: 1.25rem;
+  align-items: baseline;
+  margin-top: 4rem;
 }
 
 .nav__logo__container {
@@ -155,8 +165,6 @@ img {
   display: flex;
   align-items: center;
   column-gap: .5rem;
-  /* display: grid;
-  place-items: center; */
 }
 
 .nav__logo__quote {
@@ -165,13 +173,21 @@ img {
   font-weight: var(--font-regular);
 }
 
+.theme-switch {
+  transition: color 0.4s ease;
+}
+
+.theme-switch:hover {
+  color: var(--color-primary);
+}
+
 /* Navigation for mobile devices */
 @media screen and (max-width: 1150px){
   .nav__menu {
     position: fixed;
     top: 0;
     right: -100%;
-    background-color: hsla(228, 24%, 6%, .2);
+    background-color: hsla(230, 10%, 36%, 0.2);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     width: 50%;
@@ -208,13 +224,13 @@ img {
   padding: 1rem;
   border-radius: 1rem;
   color: var(--color-text);
-  font-weight: var(--font-semi-bold);
-  transition: background-color .4s;
+  transition: color .4s;
 }
 
 .nav__link:hover {
-  color: var(--color-text);
-  background-color: var(--color-primary);
+  color: var(--color-primary);
+  opacity: .7;
+  /* background-color: var(--color-primary); */
 }
 
 .nav__close {
@@ -286,6 +302,9 @@ img {
   margin-top: 8rem;
 }
 
+.home__button i {
+  color: var(--color-text-icons);
+}
 
 /*=============== BUTTON ===============*/
 .button {
@@ -295,7 +314,7 @@ img {
   border-radius: 1rem;
   padding: .75rem 1.5rem .75rem 1.5rem;
   background-color: var(--color-primary);
-  color: var(--color-text);
+  color: var(--color-text-icons);
   font-weight: var(--font-semi-bold);
 }
 
@@ -515,7 +534,7 @@ img {
   position: fixed;
   right: 1rem;
   bottom: -50%;
-  color: var(--color-text);
+  color: var(--color-text-icons);
   box-shadow: 0  12px 24px hsla(313, 65%, 31%, 0.6);
   display: inline-flex;
   background-color: #df048c;
@@ -566,6 +585,7 @@ img {
   .home__description {
     font-size: 1.25rem;
   }
+  
 
   .footer__content {
     grid-template-columns: repeat(3, max-content);
@@ -617,12 +637,17 @@ img {
     width: 100%;
   }
 
+  .nav__actions {
+    margin-top: 2rem;
+    align-items: end;
+  }
+
   .nav__list {
     margin-top: 3rem;
     flex-direction: row;
-    column-gap: 3.5rem;
+    column-gap: .5rem;
     align-items: center;
-    justify-content: right;
+    justify-content: flex-end;
   }
 
   .about__quotes {
