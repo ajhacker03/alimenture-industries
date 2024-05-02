@@ -207,6 +207,7 @@ img {
 
 .highlight {
   background-color: var(--color-primary);
+  color: var(--color-text-icons);
 }
 
 .highlight-founder {
